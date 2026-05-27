@@ -67,16 +67,15 @@ Do not split the namespaces unless you are comfortable managing imports/exports 
 
 ## 3. Paste the full PCT strings file in an existing or new experience
 
-Either (i) download and import releases/strings-vXX.json as a script into your Portal experience or (ii) paste the entire contents of releases/strings-vXX.json into your Portal experience script.
-Paste the entire PCT strings file into your Portal strings file.
+Either (i) download and import releases/strings-vXX.json as the STRINGS file into your Portal experience or (ii) paste the entire contents of releases/strings-vXX.json into your Portal experience STRINGS file.
 
 ## 4. Use the included experience hooks
 
-At the bottom of the script, include the required Portal event hooks. These are NOT built-in to the script. You need to add them. Please refer to the section **Minimal Standalone Template** at the end of this page, which includes a template for the experience hooks.
+At the bottom of the script, make sure the required Portal event hooks are inserted. Event handler functions such as OnGameModeStarted() are functions that are built into the Portal API and are called automatically at game runtime. These are already built-in to the release script. You don't need to add them. Go to step 5 just below.
 
 ## 5. Adjust the PCT.Initialize function in OnGameModeStarted()
 
-Example:
+Find this in your newly created/imported Portal experience script:
 
 ```ts
 export function OnGameModeStarted() {
@@ -86,6 +85,8 @@ export function OnGameModeStarted() {
 
 - `1001` is the Fixed Camera object ID. Make sure this matches the objId of the Fixed Camera that you created in Godot.
 - `"1234"` is the director passcode. Feel free to change it.
+
+Change those two values accordig to your needs.
 
 ---
 
@@ -103,7 +104,7 @@ The location of the Fixed Camera in Godot is important. This is where the intera
 
 ## 2. Paste the entire contents of the PCT strings file in your existing strings file
 
-Paste the entire releases/strings-vXX.json strings file into your Portal strings file.
+Paste the entire releases/strings-vXX.json strings file into your Portal STRINGS file.
 
 ## 3. Insert PCT_ErrorLogger, PCT_UI and PCT namespaces
 
@@ -126,7 +127,7 @@ This keeps PCT available to your event hooks.
 
 ## 4. Adjust the event functions. Do not simply duplicate them
 
-You need to adjust your event functions to create PCT hooks. These are NOT built into the script. You need to add them. Please refer to the section **Minimal Standalone Template** at the end of this page, which includes a template for the experience hooks.
+You need to adjust your event functions to create PCT hooks. The default event functions are already built into the release script, if this is what you are using. This means you will need to make some adjustments to your script(s) to ensure there is no duplicate event handler function, such as OnGameModeStarted(). Please refer to the section **Minimal Standalone Template** at the end of this page, which includes a template for the experience hooks.
 
 Portal expects one exported function per event name.
 
