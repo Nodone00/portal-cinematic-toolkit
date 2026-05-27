@@ -1492,6 +1492,9 @@ export namespace PCT {
       ps.directorState.currentStatus = state;
     }
 
+    /**
+     * @param factor between 0 and 100, where 0 means no damage taken and 100 means normal damage taken
+     */
     public static SetIncomingDamageFactor(
       player: mod.Player,
       factor: number,
@@ -3925,7 +3928,7 @@ export namespace PCT {
   }
 
   /************************
-   * Camera Type: Free
+   * Camera Type: Path
    *************************/
 
   async function StartPathCamera(
